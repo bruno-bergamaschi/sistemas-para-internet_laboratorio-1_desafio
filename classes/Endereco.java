@@ -1,8 +1,3 @@
-// o Método toString: se necessário, pesquise sobre o método toString e
-// implemente-o nesta classe, retornando uma String formatada da forma
-// que você desejar, desde que contenha as informações de todos os atributos
-// da classe. 
-
 public class Endereco {
     private String nomeDaRua;
     private String cidade;
