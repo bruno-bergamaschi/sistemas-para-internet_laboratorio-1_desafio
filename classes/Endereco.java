@@ -85,13 +85,13 @@ public class Endereco {
     public String toString() {
         return String.join(
                 System.lineSeparator(),
-                "Nome da Rua: " + nomeDaRua + ";",
-                "Cidade: " + cidade + ";",
-                "Estado: " + estado + ";",
-                "País: " + pais + ";",
-                "CEP: " + cep + ";",
-                "Número: " + numero + ";",
-                "Complemento: " + complemento + ";"
+                "Nome da Rua: " + nomeDaRua,
+                "Cidade: " + cidade,
+                "Estado: " + estado,
+                "País: " + pais,
+                "CEP: " + cep,
+                "Número: " + numero,
+                "Complemento: " + complemento
         );
     }
 }

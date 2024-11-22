@@ -58,7 +58,8 @@ public class Principal {
                     Integer.parseInt(quantidadeFuncionarios),
                     Double.parseDouble(salarioBaseFuncionario),
                     endereco,
-                    dataFundacao
+                    dataFundacao,
+                    10
                 );
             } else if (escolhaMenu.equals("2")) {
                 System.out.println("\nCriação de Loja:\n");

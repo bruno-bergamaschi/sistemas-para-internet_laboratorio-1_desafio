@@ -63,7 +63,8 @@ public class Produto {
     public String toString() {
         return String.join(
                 System.lineSeparator(),
-                "Nome: " + nome + ";",
-                "Preço: " + preco + ";");
+                "Nome: " + nome,
+                "Preço: " + preco,
+                "Data de validade: " + dataValidade.toString());
     }
 }
