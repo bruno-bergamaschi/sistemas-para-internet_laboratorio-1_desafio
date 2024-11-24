@@ -22,12 +22,12 @@ public class Principal {
     
                 if(temEndereco.equals("1")) {
                     String nomeDaRua = Teclado.leString("Rua: ");
+                    String numero = Teclado.leString("Número: ");
+                    String complemento = Teclado.leString("Complemento: ");
+                    String cep = Teclado.leString("CEP: ");
                     String cidade = Teclado.leString("Cidade: ");
                     String estado = Teclado.leString("Estado: ");
                     String pais = Teclado.leString("Pais: ");
-                    String cep = Teclado.leString("CEP: ");
-                    String numero = Teclado.leString("Número: ");
-                    String complemento = Teclado.leString("Complemento: ");
     
                     endereco = new Endereco(
                         nomeDaRua,
@@ -87,9 +87,14 @@ public class Principal {
             
         }
 
-        boolean produtoVencido = produto.estaVencido(new Data(20, 10, 2023));
+        if(produto != null) {
+            boolean produtoVencido = produto.estaVencido(new Data(20, 10, 2023));
+            System.out.println(produtoVencido ? "PRODUTO VENCIDO" : "PRODUTO NÃO VENCIDO");
+        }
+
+        if(loja != null) {
+            System.out.println(loja.toString());
+        }
         
-        System.out.println(produtoVencido ? "PRODUTO VENCIDO" : "PRODUTO NÃO VENCIDO");
-        System.out.println(loja.toString());
     }
 }

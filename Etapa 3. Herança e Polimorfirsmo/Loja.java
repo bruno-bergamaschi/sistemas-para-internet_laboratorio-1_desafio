@@ -26,13 +26,15 @@ public class Loja {
         String nome,
         int quantidadeFuncionarios,
         Endereco endereco,
-        Data dataFundacao
+        Data dataFundacao,
+        int quantidadeEstoqueProdutos
     ) {
         this.nome = nome;
         this.quantidadeFuncionarios = quantidadeFuncionarios;
         this.salarioBaseFuncionario = -1;
         this.endereco = endereco;
         this.dataFundacao = dataFundacao;
+        this.estoqueProdutos = new Produto[quantidadeEstoqueProdutos];
     }
 
     public String getNome() {
@@ -79,13 +81,10 @@ public class Loja {
         return this.estoqueProdutos;
     }
 
-    @Override
-    public String toString() {
-        return String.join(
+    private String formatarEndereco() {
+        if(this.endereco != null) {
+            return String.join(
                 System.lineSeparator(),
-                "Nome: " + nome,
-                "Quantidade de funcionários: " + quantidadeFuncionarios,
-                "Salário base do funcionario: " + salarioBaseFuncionario,
                 "Endereço:",
                 "- Rua: " + endereco.getNomeDaRua(),
                 "- Número: " + endereco.getNumero(),
@@ -93,8 +92,52 @@ public class Loja {
                 "- CEP: " + endereco.getCep(),
                 "- Cidade: " + endereco.getCidade(),
                 "- Estado: " + endereco.getEstado(),
-                "- Pais: " + endereco.getPais(),
-                "Data de fundação: " + dataFundacao.toString());
+                "- Pais: " + endereco.getPais());
+        }
+
+        return "Endereço: Não cadastrado.";
+    }
+    
+    private String formatarDataFundacao() {
+        if(this.dataFundacao != null) {
+            return "Data da fundação" + dataFundacao.toString();
+        }
+
+        return "Data da fundação: Não informado.";
+    }
+
+    private String formatarEstoqueProdutos() {
+        boolean existeProdutoCadastrado = false;
+        for (Produto produto : estoqueProdutos) {
+            if(produto != null){
+                existeProdutoCadastrado = true;
+            }
+        }
+
+        if (!existeProdutoCadastrado) {
+            return "Nenhuma produto cadastrado.";
+        }
+    
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Produto produto : estoqueProdutos) {
+            if(produto != null){
+                stringBuilder.append(produto.toString());
+                stringBuilder.append(System.lineSeparator());
+            }
+        }
+        return stringBuilder.toString();
+    }
+
+    @Override
+    public String toString() {
+        return String.join(
+                System.lineSeparator(),
+                "Nome: " + nome,
+                "Quantidade de funcionários: " + quantidadeFuncionarios,
+                "Salário base do funcionario: " + salarioBaseFuncionario,
+                formatarEndereco(),
+                formatarDataFundacao(),
+                "Estoque de produtos: " + formatarEstoqueProdutos());
     }
 
     public double gastosComSalario() {
@@ -123,16 +166,13 @@ public class Loja {
             }
         }
 
-        if(!existeProdutoCadastrada) {
-            System.out.println("Nenhum produto cadastrado.");
-            return;
-        }
-
-        for(Produto produto : estoqueProdutos) {
-            System.out.println(produto.getNome());
-            System.out.println(produto.getPreco());
-            System.out.println(produto.getDataValidade());
-            System.out.println("-------------------------------------------");
+        if(existeProdutoCadastrada) {
+            for(Produto produto : estoqueProdutos) {
+                System.out.println(produto.getNome());
+                System.out.println(produto.getPreco());
+                System.out.println(produto.getDataValidade());
+                System.out.println("-------------------------------------------");
+            }
         }
     }
 

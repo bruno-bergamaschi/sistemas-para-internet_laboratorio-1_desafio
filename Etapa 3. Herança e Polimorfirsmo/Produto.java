@@ -39,6 +39,15 @@ public class Produto {
         this.dataValidade = dataValidade;
     }
 
+    @Override
+    public String toString() {
+        return String.join(
+                System.lineSeparator(),
+                "Nome: " + nome,
+                "Preço: " + preco,
+                "Data de validade: " + dataValidade.toString());
+    }
+
     public boolean estaVencido(Data data) {
         LocalDate dataValidadeDoProduto = LocalDate.of(
             this.dataValidade.getAno(),
@@ -57,14 +66,5 @@ public class Produto {
         }
 
         return false;
-    }
-
-    @Override
-    public String toString() {
-        return String.join(
-                System.lineSeparator(),
-                "Nome: " + nome,
-                "Preço: " + preco,
-                "Data de validade: " + dataValidade.toString());
     }
 }

@@ -4,15 +4,15 @@ public class Data {
     private int ano;
 
     public Data(int dia, int mes, int ano) {
-        this.ano = ano;
         this.dia = dia;
         this.mes = mes;
+        this.ano = ano;
 
         boolean anoBissexto = this.verificaAnoBissexto();
         boolean diaValido = this.validaDiaDoMes(anoBissexto);
 
         if (!diaValido) {
-            this.ano = 1;
+            this.dia = 1;
             this.mes = 1;
             this.ano = 2000;
 
@@ -42,6 +42,11 @@ public class Data {
 
     public void setAno(int ano) {
         this.ano = ano;
+    }
+
+    @Override
+    public String toString() {
+        return dia + "/" + mes + "/" + ano;
     }
 
     public boolean verificaAnoBissexto() {
@@ -85,10 +90,5 @@ public class Data {
             default:
                 return false;
         }
-    }
-
-    @Override
-    public String toString() {
-        return dia + "/" + mes + "/" + ano;
     }
 }
